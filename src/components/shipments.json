@@ -1,0 +1,28 @@
+[
+    {
+        "id":"asdd1122",
+        "name":"Amazon.com",
+        "email":"contact@amazon.com",
+        "boxes":"6.8,7.9,3,6.8,6.8"
+    
+    },    {
+        "id":"asdd1123",
+        "name":"Guugel.com",
+        "email":"contact@Guugel.com",
+        "boxes":"6.8,7.9,3"
+    
+    },    {
+        "id":"asdd1124",
+        "name":"Hardenize.ee",
+        "email":"contact@hardenize.ee",
+        "boxes":"6.8,7.9,3"
+    
+    },    {
+        "id":"asdd1125",
+        "name":"Proxyvpn.com",
+        "email":"contact@proxyvpn.com",
+        "boxes":"6.8,7.9,3"
+    
+    }
+]
+
