@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from "react";
-//import shipmentsFile from '../components/shipments.json'
+
 
 
 
@@ -58,7 +58,7 @@ function Home() {
                 for (const key in body) {
                     newArray.push(body[key]);
                 }
-                setShipmentsTemp(newArray);
+                setShipments(newArray);
             });
     }, [])
 
@@ -69,7 +69,7 @@ function Home() {
 
 
     function searchByName() {
-
+        
         const index = shipments.filter(element => element.name.toLowerCase().includes(nameRef.current.value.toLowerCase()))
         console.log(index + " indeks id")
         if (index !== []) {
