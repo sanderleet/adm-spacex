@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
- 
+
 
 function ShipmentDetails() {
 
@@ -12,10 +12,10 @@ function ShipmentDetails() {
     const shipment = shipments.find(element => element.id === window.location.href.split("shipmentDetails/")[1]);
 
     const index = shipments.indexOf(shipment)
-    console.log(index)
+    //console.log(index)
 
     useEffect(() => {
-        fetch(DATABASE_URL +'shipments.json')
+        fetch(DATABASE_URL + 'shipments.json')
             .then(response => response.json())
             .then(body => {
                 const newArray = [];
@@ -33,23 +33,25 @@ function ShipmentDetails() {
         return Math.ceil(addition / 10)
     }
 
-    
+
 
     function editBoxes(event) {
         event.preventDefault();
 
-        const updatedShipment = shipment 
+        const updatedShipment = shipment
         updatedShipment.boxes = boxesRef.current.value
 
         const updatedShipments = shipments
         updatedShipments[index] = updatedShipment
 
-        fetch(DATABASE_URL +'shipments.json',
+
+        fetch(DATABASE_URL + 'shipments.json',
             {
                 method: "PUT",
                 body: JSON.stringify(updatedShipments)
             });
         setShipments(updatedShipments)
+
     }
 
     return (
@@ -61,7 +63,7 @@ function ShipmentDetails() {
                         <li><label htmlFor="">Email: {shipment.email} </label> </li>
                         <li><label htmlFor=""> Boxes: </label> </li>
                         <li><input ref={boxesRef} defaultValue={shipment.boxes} /> </li>
-                            <button >Update Cargo Boxes</button>
+                        <button >Update Cargo Boxes</button>
 
                         <li><label htmlFor="">Required cargo bays: {calculateBays(shipment.boxes)} </label>  </li>
                     </ul>

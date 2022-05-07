@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
 import NavigationBar from './components/NavigationBar';
 
-import ShipmentDetails from './components/ShipmentDetails';
+import ShipmentDetails from './pages/ShipmentDetails';
 import './App.css';
 
 function App() {
