@@ -89,8 +89,8 @@ function Home() {
 
             {shipmentsTemp.map(shipment =>
 
-                <div className='shipment-container'>
-                    <Link to={'/shipmentDetails/' + shipment.id} key={shipment.id}>
+                <div className='shipment-container' key={shipment.id}>
+                    <Link to={'/shipmentDetails/' + shipment.id} >
                         <h1 className='shipment-link'>
                             {shipment.name.split('.')[0]}
                         </h1>

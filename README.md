@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Firebase hosting:
+https://adm-spacex.web.app/
+https://adm-spacex.firebaseapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
