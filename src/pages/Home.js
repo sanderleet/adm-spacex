@@ -52,24 +52,24 @@ function Home() {
 
     //shipments.find(e => e.id === window.location.href.split("shipmentDetails/")[1] )
 
-    useEffect(() => { 
+    useEffect(() => {
         fetch(DATABASE_URL + 'shipments.json')
-            .then(response => response.json())  
-            .then(body => {                    
+            .then(response => response.json())
+            .then(body => {
                 const newArray = [];
                 for (const key in body) {
                     newArray.push(body[key]);
                 }
                 setShipments(newArray);
                 setShipmentsTemp(newArray)
-                
+
             });
     }, [])
 
 
 
     function searchByName() {
-        
+
         const index = shipments.filter(element => element.name.toLowerCase().includes(nameRef.current.value.toLowerCase()))
         console.log(index + " indeks id")
         if (index !== []) {
@@ -85,19 +85,23 @@ function Home() {
             <input onKeyUp={searchByName} ref={nameRef} type="text" placeholder='Search' /> <br />
         </div>
 
-        {shipmentsTemp.map(shipment =>
-            <div key={shipment.id}>
-                <Link to={'/shipmentDetails/' + shipment.id} >
-                    <h1 className='shipment-link'>
-                        {shipment.name.split('.')[0]}
-                    </h1>
-                </Link>
-            </div>
-        )}
+        <div >
 
-        {shipmentsTemp.length === 0 && <div> Shipment Order Not found</div>}
+            {shipmentsTemp.map(shipment =>
 
+                <div className='shipment-container'>
+                    <Link to={'/shipmentDetails/' + shipment.id} key={shipment.id}>
+                        <h1 className='shipment-link'>
+                            {shipment.name.split('.')[0]}
+                        </h1>
+                    </Link>
+                </div>
 
+            )}
+
+            {shipmentsTemp.length === 0 && <div> Shipment Order Not found</div>}
+
+        </div>
     </div>)
 }
 

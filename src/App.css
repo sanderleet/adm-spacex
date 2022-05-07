@@ -14,19 +14,21 @@ body {
 
 
 .shipment-link, input {
-
+  
   background-color: rgb(43, 76, 226);
   border: 2px;
   border-radius: 8px;
   opacity: 80%;
   margin: 1vh;
   padding: 1vh;
-
   color: white;
+}
 
+.shipment-container {
+  display: flex;
+  flex-direction: column;  
   max-width: 740px;
-  justify-content: space-around;
-  
+  margin: auto;
 }
 
 
