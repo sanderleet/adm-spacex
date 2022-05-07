@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
+ 
 
 function ShipmentDetails() {
 
+
     const boxesRef = useRef();
+
+    const DATABASE_URL = 'https://adm-spacex-default-rtdb.europe-west1.firebasedatabase.app/'
 
     const [shipments, setShipments] = useState([]);
     const shipment = shipments.find(element => element.id === window.location.href.split("shipmentDetails/")[1]);
@@ -11,7 +15,7 @@ function ShipmentDetails() {
     console.log(index)
 
     useEffect(() => {
-        fetch('https://adm-spacex-default-rtdb.europe-west1.firebasedatabase.app/shipments.json')
+        fetch(DATABASE_URL +'shipments.json')
             .then(response => response.json())
             .then(body => {
                 const newArray = [];
@@ -27,7 +31,6 @@ function ShipmentDetails() {
         let addition = 0
         boxes.split(',').forEach(element => { addition += Number(element) });
         return Math.ceil(addition / 10)
-
     }
 
     
@@ -35,15 +38,16 @@ function ShipmentDetails() {
     function editBoxes(event) {
         event.preventDefault();
 
-        const updatedShipment = shipment
+        const updatedShipment = shipment 
         updatedShipment.boxes = boxesRef.current.value
+
         const updatedShipments = shipments
         updatedShipments[index] = updatedShipment
 
-        fetch("https://adm-spacex-default-rtdb.europe-west1.firebasedatabase.app/shipments.json",
+        fetch(DATABASE_URL +'shipments.json',
             {
                 method: "PUT",
-                body: JSON.stringify(shipments)
+                body: JSON.stringify(updatedShipments)
             });
         setShipments(updatedShipments)
     }

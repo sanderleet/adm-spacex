@@ -44,6 +44,8 @@ Arvutamine +
 
 function Home() {
 
+    const DATABASE_URL = 'https://adm-spacex-default-rtdb.europe-west1.firebasedatabase.app/'
+
     const [shipments, setShipments] = useState([]);
     const [shipmentsTemp, setShipmentsTemp] = useState([]);
     const nameRef = useRef();
@@ -51,7 +53,7 @@ function Home() {
     //shipments.find(e => e.id === window.location.href.split("shipmentDetails/")[1] )
 
     useEffect(() => { 
-        fetch('https://adm-spacex-default-rtdb.europe-west1.firebasedatabase.app/shipments.json')
+        fetch(DATABASE_URL + 'shipments.json')
             .then(response => response.json())  
             .then(body => {                    
                 const newArray = [];
@@ -59,12 +61,10 @@ function Home() {
                     newArray.push(body[key]);
                 }
                 setShipments(newArray);
+                setShipmentsTemp(newArray)
+                
             });
     }, [])
-
-
-    console.log('uus shipments')
-    console.log(shipments);
 
 
 
