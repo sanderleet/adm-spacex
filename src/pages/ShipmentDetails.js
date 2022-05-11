@@ -49,16 +49,16 @@ function ShipmentDetails() {
     return (
         <div className='details'>
             {shipment &&
-                <form onSubmit={editBoxes} >
+                <form >
                     <ul>
                         <li><label htmlFor=""> <h1>{shipment.name.split('.')[0].toUpperCase()} </h1></label>   </li>
                         <li><label htmlFor="">Email: {shipment.email} </label> </li>
                         <li><label htmlFor=""> Boxes: </label> </li>
-                        <li><input ref={boxesRef} defaultValue={shipment.boxes} /> </li>
-                        <button >Update Cargo Boxes</button>
+                        <li><input ref={boxesRef} defaultValue={shipment.boxes} onChange={editBoxes} /> </li>
                         <li><label htmlFor="">Required cargo bays: {calculateBays(shipment.boxes)} </label>  </li>
                     </ul>
                 </form>}
+                
         </div>
     )
 }
