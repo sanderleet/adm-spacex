@@ -7,12 +7,9 @@ function ShipmentDetails() {
     const boxesRef = useRef();
 
     const DATABASE_URL = 'https://adm-spacex-default-rtdb.europe-west1.firebasedatabase.app/'
-
     const [shipments, setShipments] = useState([]);
     const shipment = shipments.find(element => element.id === window.location.href.split("shipmentDetails/")[1]);
-
     const index = shipments.indexOf(shipment)
-    //console.log(index)
 
     useEffect(() => {
         fetch(DATABASE_URL + 'shipments.json')
@@ -22,28 +19,24 @@ function ShipmentDetails() {
                 for (const key in body) {
                     newArray.push(body[key]);
                 }
-                setShipments(newArray); // setProducts)= ei annaks errorit 
+                setShipments(newArray); //
             });
     }, [shipments])
 
 
-    function calculateBays(boxes) {         //arvuta mitu "Cargo Bay"-d vaja - jaga kümnega ja ümarda üles
+    function calculateBays(boxes) {     
         let addition = 0
         boxes.split(',').forEach(element => { addition += Number(element) });
         return Math.ceil(addition / 10)
     }
-
-
 
     function editBoxes(event) {
         event.preventDefault();
 
         const updatedShipment = shipment
         updatedShipment.boxes = boxesRef.current.value
-
         const updatedShipments = shipments
         updatedShipments[index] = updatedShipment
-
 
         fetch(DATABASE_URL + 'shipments.json',
             {
@@ -51,7 +44,6 @@ function ShipmentDetails() {
                 body: JSON.stringify(updatedShipments)
             });
         setShipments(updatedShipments)
-
     }
 
     return (
@@ -64,13 +56,10 @@ function ShipmentDetails() {
                         <li><label htmlFor=""> Boxes: </label> </li>
                         <li><input ref={boxesRef} defaultValue={shipment.boxes} /> </li>
                         <button >Update Cargo Boxes</button>
-
                         <li><label htmlFor="">Required cargo bays: {calculateBays(shipment.boxes)} </label>  </li>
                     </ul>
                 </form>}
         </div>
-
-
     )
 }
 
