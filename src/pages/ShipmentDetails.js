@@ -24,7 +24,7 @@ function ShipmentDetails() {
                 }
                 setShipments(newArray); // setProducts)= ei annaks errorit 
             });
-    }, [])
+    }, [shipments])
 
 
     function calculateBays(boxes) {         //arvuta mitu "Cargo Bay"-d vaja - jaga kümnega ja ümarda üles
